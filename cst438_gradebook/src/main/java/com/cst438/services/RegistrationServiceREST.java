@@ -1,11 +1,16 @@
 package com.cst438.services;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 import com.cst438.domain.CourseDTOG;
+import com.cst438.domain.CourseRepository;
 
 public class RegistrationServiceREST extends RegistrationService {
+	
+	
 
 	
 	RestTemplate restTemplate = new RestTemplate();
@@ -21,6 +26,9 @@ public class RegistrationServiceREST extends RegistrationService {
 	public void sendFinalGrades(int course_id , CourseDTOG courseDTO) { 
 		
 		//TODO  complete this method in homework 4
+		System.out.println("Sending completed grades" + course_id +" " +courseDTO);
+		restTemplate.put(registration_url + "/course" + course_id, courseDTO);
+		System.out.println("Final grades completion");
 		
 	}
 }
