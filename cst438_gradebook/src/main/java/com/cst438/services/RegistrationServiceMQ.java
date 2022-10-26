@@ -45,6 +45,14 @@ public class RegistrationServiceMQ extends RegistrationService {
 	public void receive(EnrollmentDTO enrollmentDTO) {
 		
 		//TODO  complete this method in homework 4
+		System.out.println("Gotten grade" + enrollmentDTO);
+		
+		for(EnrollmentDTO.enrollmentDTO d : EnrollmentDTO.name) {
+			Course c = courseRepository.findById(courseDTOG.course_id);
+			c.setCourse_id(d.course_id);
+			courseRepository.save(c);
+			System.out.println("Final result " + d.name + d.instructor);
+		}
 		
 	}
 
@@ -53,6 +61,7 @@ public class RegistrationServiceMQ extends RegistrationService {
 	public void sendFinalGrades(int course_id, CourseDTOG courseDTO) {
 		 
 		//TODO  complete this method in homework 4
+		
 		
 	}
 
